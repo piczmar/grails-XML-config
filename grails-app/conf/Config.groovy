@@ -50,7 +50,16 @@ grails.json.legacy.builder = false
 // enabled native2ascii conversion of i18n properties files
 grails.enable.native2ascii = true
 // packages to include in Spring bean scanning
-grails.spring.bean.packages = ['grails.xml.config.controllers']
+grails.spring.bean.packages = [
+        'grails.xml.config.controllers' ,
+        'com.test'
+//        'org.springframework.security.oauth2.client',
+//        'org.springframework.security.oauth2.common',
+//        'org.springframework.security.oauth2.config',
+//        'org.springframework.security.oauth2.http',
+//        'org.springframework.security.oauth2.provider' ,
+//        'org.springframework.security.oauth2.provider.endpoint'
+]
 // whether to disable processing of multi part requests
 grails.web.disable.multipart=false
 
@@ -89,4 +98,6 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+    debug 'org.springframework.security',
+            'com.example.security'
 }

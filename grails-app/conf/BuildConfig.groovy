@@ -43,7 +43,7 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
         // runtime 'mysql:mysql-connector-java:5.1.20'
-        compile('org.springframework.security:spring-security-core:3.1.0.RELEASE') {
+        compile('org.springframework.security:spring-security-core:3.1.2.RELEASE') {
 //			transitive = false
             excludes 'spring-expression', 'spring-core', 'spring-context', 'spring-tx',
                     'spring-aop', 'spring-jdbc', 'spring-web', 'spring-test', 'aspectjrt',
@@ -51,16 +51,24 @@ grails.project.dependency.resolution = {
                     'hsqldb', 'jsr250-api', 'log4j', 'junit', 'mockito-core', 'jmock-junit4'
         }
 
-        compile('org.springframework.security:spring-security-web:3.1.0.RELEASE') {
+        compile('org.springframework.security:spring-security-web:3.1.2.RELEASE') {
 //			transitive = false
             excludes 'spring-security-core', 'spring-web', 'spring-jdbc', 'spring-test',
                     'commons-codec', 'hsqldb', 'servlet-api', 'junit', 'mockito-core', 'jmock-junit4'
         }
-        compile('org.springframework.security:spring-security-config:3.1.0.RELEASE') {
+        compile('org.springframework.security:spring-security-config:3.1.2.RELEASE') {
             excludes 'spring-security-core', 'spring-security-web', 'spring-web', 'commons-logging', 'servlet-api',
                     'spring-beans', 'spring-core', 'spring-context', 'spring-aop', 'aspectjweaver', 'aopalliance'
         }
-        compile('org.codehaus.spring-security-oauth:spring-security-oauth:3.10')
+        compile('org.springframework:spring-webmvc:3.1.2.RELEASE')
+
+        compile('org.springframework.security.oauth:spring-security-oauth2:1.0.0.RC2')
+        compile('javax.inject:javax.inject:1')
+        runtime('org.codehaus.jackson:jackson-mapper-asl:1.9.9')
+        runtime('org.codehaus.jackson:jackson-core-asl:1.9.9')
+        //runtime('org.codehaus.jackson:jackson-jaxrs:1.9.2')
+        //compile('com.fasterxml:jackson-module-json-org:0.9.1')
+
         test('org.apache.httpcomponents:httpclient:4.2.3')
 
     }
