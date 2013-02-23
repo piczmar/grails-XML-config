@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+
+    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+        <!--<property name="driverClassName" value="org.h2.Driver"/>-->
+        <!--<property name="url" value="jdbc:h2:file:h2db"/>-->
+        <!--<property name="username" value="sa"/>-->
+        <!--<property name="password" value=""/>-->
+    <!--</bean>-->
+
+
+
+    <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">
+        <!--<jdbc:script location="classpath:/org/springframework/social/connect/jdbc/JdbcUsersConnectionRepository.sql" />-->
+        <jdbc:script location="classpath:/org/springframework/social/showcase/account/Account.sql" />
+        <jdbc:script location="classpath:/org/springframework/social/showcase/account/data.sql" />
+    </jdbc:initialize-database>
+
+
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		c:_-ref="dataSource" />
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+		c:_-ref="dataSource" />
+
+	<tx:annotation-driven />
+
+</beans>

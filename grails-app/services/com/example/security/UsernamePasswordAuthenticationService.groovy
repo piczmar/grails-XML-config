@@ -1,6 +1,6 @@
 package com.example.security
 
-import grails.custom.security.User
+import com.visitinfo.security.User
 import org.springframework.security.authentication.AuthenticationProvider
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication

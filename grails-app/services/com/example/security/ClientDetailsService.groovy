@@ -1,6 +1,6 @@
 package com.example.security
 
-import grails.custom.security.App
+import com.visitinfo.security.App
 import org.apache.log4j.Logger
 import org.springframework.security.oauth2.common.exceptions.OAuth2Exception
 import org.springframework.security.oauth2.provider.BaseClientDetails

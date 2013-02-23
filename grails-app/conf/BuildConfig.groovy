@@ -18,7 +18,7 @@ grails.project.dependency.resolution = {
         // specify dependency exclusions here; for example, uncomment this to disable ehcache:
         // excludes 'ehcache'
     }
-    log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
+    log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     checksums true // Whether to verify checksums on resolve
     legacyResolve false // whether to do a secondary resolve on plugin installation, not advised and here for backwards compatibility
 
@@ -37,6 +37,15 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
+
+        //Spring Framework Milestone Repository
+        mavenRepo "http://s3.amazonaws.com/maven.springframework.org/milestone"
+        //Spring Framework Release Repository</name>
+        mavenRepo "http://maven.springframework.org/release"
+        //<!-- necessary for Spring Security 3.1.0.CI-SNAPSHOT dependency -->
+        //Spring Framework Maven Release Repository
+        mavenRepo "http://maven.springframework.org/snapshot"
+        mavenRepo "http://oauth.googlecode.com/svn/code/maven/"
     }
 
     dependencies {
@@ -60,9 +69,9 @@ grails.project.dependency.resolution = {
             excludes 'spring-security-core', 'spring-security-web', 'spring-web', 'commons-logging', 'servlet-api',
                     'spring-beans', 'spring-core', 'spring-context', 'spring-aop', 'aspectjweaver', 'aopalliance'
         }
-        compile('org.springframework:spring-webmvc:3.1.2.RELEASE')
+        //compile('org.springframework:spring-webmvc:3.1.2.RELEASE')
 
-        compile('org.springframework.security.oauth:spring-security-oauth2:1.0.0.RC2')
+        //compile('org.springframework.security.oauth:spring-security-com.example.oauth2:1.0.0.RC2')
         compile('javax.inject:javax.inject:1')
         runtime('org.codehaus.jackson:jackson-mapper-asl:1.9.9')
         runtime('org.codehaus.jackson:jackson-core-asl:1.9.9')
@@ -70,6 +79,8 @@ grails.project.dependency.resolution = {
         //compile('com.fasterxml:jackson-module-json-org:0.9.1')
 
         test('org.apache.httpcomponents:httpclient:4.2.3')
+        test('org.codehaus.groovy:http-builder:0.4.1')
+        test('org.apache.commons:commons-io:1.3.2')
 
     }
 

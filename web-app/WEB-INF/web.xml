@@ -59,6 +59,12 @@
     </filter-mapping><filter-mapping><filter-name>urlMapping</filter-name><url-pattern>/*</url-pattern><dispatcher>FORWARD</dispatcher><dispatcher>REQUEST</dispatcher></filter-mapping><listener><listener-class>org.codehaus.groovy.grails.plugins.log4j.web.util.Log4jConfigListener</listener-class></listener>
 
     <listener>
+        <listener-class>
+            org.springframework.web.context.request.RequestContextListener
+        </listener-class>
+    </listener>
+
+    <listener>
         <listener-class>org.codehaus.groovy.grails.web.context.GrailsContextLoaderListener</listener-class>
     </listener><servlet><servlet-name>H2Console</servlet-name><servlet-class>org.h2.server.web.WebServlet</servlet-class><init-param><param-name>-webAllowOthers</param-name><param-value>true</param-value></init-param><load-on-startup>2</load-on-startup></servlet><servlet-mapping><servlet-name>H2Console</servlet-name><url-pattern>/dbconsole/*</url-pattern></servlet-mapping>
 

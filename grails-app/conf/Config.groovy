@@ -52,13 +52,16 @@ grails.enable.native2ascii = true
 // packages to include in Spring bean scanning
 grails.spring.bean.packages = [
         'grails.xml.config.controllers' ,
-        'com.test'
-//        'org.springframework.security.oauth2.client',
-//        'org.springframework.security.oauth2.common',
-//        'org.springframework.security.oauth2.config',
-//        'org.springframework.security.oauth2.http',
-//        'org.springframework.security.oauth2.provider' ,
-//        'org.springframework.security.oauth2.provider.endpoint'
+        'com.test',
+        'org.springframework.social',
+        'org.springframework.social.security',
+        'org.springframework.social.showcase.signup'
+//        'org.springframework.security.com.example.oauth2.client',
+//        'org.springframework.security.com.example.oauth2.common',
+//        'org.springframework.security.com.example.oauth2.config',
+//        'org.springframework.security.com.example.oauth2.http',
+//        'org.springframework.security.com.example.oauth2.provider' ,
+//        'org.springframework.security.com.example.oauth2.provider.endpoint'
 ]
 // whether to disable processing of multi part requests
 grails.web.disable.multipart=false
@@ -95,9 +98,8 @@ log4j = {
            'org.codehaus.groovy.grails.commons',            // core / classloading
            'org.codehaus.groovy.grails.plugins',            // plugins
            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
-           'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
-    debug 'org.springframework.security',
-            'com.example.security'
+    debug 'org.springframework',
+          'com.example.security'
 }

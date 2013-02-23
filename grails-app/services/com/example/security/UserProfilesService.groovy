@@ -1,9 +1,8 @@
 package com.example.security
 
-import com.springsource.greenhouse.members.ProfileRepository
-import grails.custom.security.User
+import com.visitinfo.security.User
 
-class UserProfilesService implements ProfileRepository {
+class UserProfilesService {
 
 
     @Override

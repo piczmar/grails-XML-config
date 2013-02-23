@@ -19,11 +19,19 @@ class UrlMappings {
 
         '/members/@self'(controller: 'members',action: 'profile')
 //        '/members/@self'(uri: "/members/@self.dispatch")
+        '/system/test'(controller: 'grails', action: 'test')
 
-        "/oauth/token"(uri:"/oauth/token.dispatch")
-        "/oauth/authorize"(uri:"/oauth/authorize.dispatch")
-        "/oauth/confirm_access"(uri:"/oauth/confirm_access.dispatch")
-        "/oauth/error"(uri:"/oauth/error.dispatch")
+        "/signin"(uri:"/signin.dispatch")
+        "/signup"(uri:"/signup.dispatch")
+        "/canvas"(uri:"/canvas.dispatch")
+        "/connect"(uri:"/connect.dispatch")
+
+
+//        "/oauth/token"(uri:"/oauth/token.dispatch")
+//        "/oauth/authorize"(uri:"/oauth/authorize.dispatch")
+//        "/oauth/confirm_access"(uri:"/oauth/confirm_access.dispatch")
+//        "/oauth/error"(uri:"/oauth/error.dispatch")
+        "/auth/facebook"(uri:"/auth/facebook.dispatch")
 
 
 	}
