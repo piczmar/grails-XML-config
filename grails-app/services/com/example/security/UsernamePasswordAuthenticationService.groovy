@@ -22,7 +22,7 @@ class UsernamePasswordAuthenticationService implements AuthenticationProvider {
             return authenticatedToken(user, authentication);
         }
 //        try {
-//            Account account = accountRepository.authenticate(token.getName(), (String) token.getCredentials());
+//            Account account = accountService.authenticate(token.getName(), (String) token.getCredentials());
 //            return authenticatedToken(account, authentication);
 //        } catch (SignInNotFoundException e) {
 //            throw new org.springframework.security.core.userdetails.UsernameNotFoundException(token.getName(), e);

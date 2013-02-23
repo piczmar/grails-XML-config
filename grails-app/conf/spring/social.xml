@@ -18,8 +18,25 @@
 	<!--<twitter:config app-id="${twitter.consumerKey}" app-secret="${twitter.consumerSecret}"/>-->
 	<!--<linkedin:config app-id="${linkedin.consumerKey}" app-secret="${linkedin.consumerSecret}"/>-->
 
-	<social:jdbc-connection-repository/>	
-	<bean id="userIdSource" class="org.springframework.social.security.AuthenticationNameUserIdSource" />
+	<!--<social:jdbc-connection-repository/>	-->
+
+    <bean id="usersConnectionRepository" class="org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository">
+
+        <constructor-arg index="0" ref="dataSource"/>
+        <constructor-arg index="1" ref="connectionFactoryLocator"/>
+        <constructor-arg index="2" ref="textEncryptor"/>
+    </bean>
+    <bean id="connectionRepository" class="org.springframework.social.connect.jdbc.JdbcConnectionRepository">
+
+        <constructor-arg index="0" value="164916936996014"/>
+        <constructor-arg index="1" ref="jdbcTemplate"/>
+        <constructor-arg index="2" ref="connectionFactoryLocator"/>
+        <constructor-arg index="3" ref="textEncryptor"/>
+        <constructor-arg index="4" value=""/>
+    </bean>
+
+
+    <bean id="userIdSource" class="org.springframework.social.security.AuthenticationNameUserIdSource" />
 
  	<bean id="connectController" class="org.springframework.social.connect.web.ConnectController" autowire="constructor">
 		<property name="connectInterceptors">
@@ -63,4 +80,10 @@
         <constructor-arg value="27e42185637b3f11ffb2e76fce74aae0"/>
         <constructor-arg value=""/>
     </bean>
+
+    <!--<bean id="signupController2" class="org.springframework.social.showcase.signup.SignupController">-->
+        <!--<property name="accountService" ref="accountService"/>-->
+    <!--</bean>-->
+    <!--<bean id="facebook" class="org.springframework.social.facebook.api.impl.FacebookTemplate"/>-->
+
 </beans>

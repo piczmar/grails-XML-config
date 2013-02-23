@@ -33,11 +33,13 @@ public class PostToWallAfterConnectInterceptor implements ConnectInterceptor<Fac
 	}
 
 	public void postConnect(Connection<Facebook> connection, WebRequest request) {
+        System.out.println("POST TO WALL:  I've connected with the Spring Social Showcase!");
 		if (request.getAttribute(POST_TO_WALL_ATTRIBUTE, WebRequest.SCOPE_SESSION) != null) {
 			try {
 				connection.updateStatus("I've connected with the Spring Social Showcase!");
 			} catch (ApiException e) {
 				// Do nothing: No need to break down if the post-connect post can't be made.
+                e.printStackTrace();
 			}
 			request.removeAttribute(POST_TO_WALL_ATTRIBUTE, WebRequest.SCOPE_SESSION);
 		}

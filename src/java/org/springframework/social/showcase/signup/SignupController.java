@@ -15,11 +15,11 @@
  */
 package org.springframework.social.showcase.signup;
 
+import com.visitinfo.security.User;
 import org.apache.log4j.Logger;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.web.ProviderSignInUtils;
-import org.springframework.social.showcase.account.Account;
-import org.springframework.social.showcase.account.AccountRepository;
+import org.springframework.social.showcase.account.AccountService;
 import org.springframework.social.showcase.account.UsernameAlreadyInUseException;
 import org.springframework.social.showcase.signin.SignInUtils;
 import org.springframework.stereotype.Controller;
@@ -35,13 +35,10 @@ import javax.validation.Valid;
 
 @Controller
 public class SignupController {
+    @Inject
+	public AccountService accountService;
 
-	private final AccountRepository accountRepository;
     private static Logger logger = Logger.getLogger(SignupController.class);
-	@Inject
-	public SignupController(AccountRepository accountRepository) {
-		this.accountRepository = accountRepository;
-	}
 
 	@RequestMapping(value="/signup.dispatch", method=RequestMethod.GET)
 	public ModelAndView signupForm(WebRequest request) {
@@ -65,7 +62,7 @@ public class SignupController {
 		if (formBinding.hasErrors()) {
 			return null;
 		}
-		Account account = createAccount(form, formBinding);
+		User account = createAccount(form, formBinding);
 		if (account != null) {
 			SignInUtils.signin(account.getUsername());
 			ProviderSignInUtils.handlePostSignUp(account.getUsername(), request);
@@ -76,11 +73,13 @@ public class SignupController {
 
 	// internal helpers
 	
-	private Account createAccount(SignupForm form, BindingResult formBinding) {
+	private User createAccount(SignupForm form, BindingResult formBinding) {
 		try {
-			Account account = new Account(form.getUsername(), form.getPassword(), form.getFirstName(), form.getLastName());
-			accountRepository.createAccount(account);
-			return account;
+            User account = new User();
+            account.setUsername(form.getUsername());
+            account.setPassword("DUMMY_NOT_BLANK");
+            accountService.createAccount(account);
+            return account;
 		} catch (UsernameAlreadyInUseException e) {
 			formBinding.rejectValue("username", "user.duplicateUsername", "already in use");
 			return null;

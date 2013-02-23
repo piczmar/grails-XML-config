@@ -14,10 +14,9 @@
     <context:component-scan base-package="org.springframework.social.showcase" />
 
     <http pattern="/resources/**" security="none" />
-
     <http use-expressions="true">
         <!-- Authentication policy -->
-        <form-login login-page="/signin" login-processing-url="/signin/authenticate" authentication-failure-url="/signin?param.error=bad_credentials" />
+        <form-login login-page="/signin" default-target-url='/' authentication-failure-url="/signin?param.error=bad_credentials" />
         <logout logout-url="/signout" delete-cookies="JSESSIONID" />
         <intercept-url pattern="/favicon.ico" access="permitAll" />
         <intercept-url pattern="/resources/**" access="permitAll" />
@@ -37,46 +36,48 @@
 
 
 
-    <authentication-manager alias="authenticationManager">
-        <authentication-provider user-service-ref="userDetailsService">
-            <password-encoder ref="passwordEncoder" />
-        </authentication-provider>
-
-        <!-- Spring Social Security authentication provider -->
-        <authentication-provider ref="socialAuthenticationProvider" />
-    </authentication-manager>
-    <jdbc-user-service id="userDetailsService"
-                       data-source-ref="dataSource"
-                       users-by-username-query="select username, password, true from Account where username = ?"
-                       authorities-by-username-query="select username, 'ROLE_USER' from Account where username = ?"/>
-
-
-
-
-
-    <!--<beans:bean id="daoAuthenticationProvider"-->
-                <!--class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">-->
-        <!--<beans:property name="userDetailsService" ref="userDetailsService"/>-->
-    <!--</beans:bean>-->
-
-    <!--<beans:bean id="authenticationManager"-->
-                <!--class="org.springframework.security.authentication.ProviderManager">-->
-        <!--<beans:property name="providers">-->
-            <!--<beans:list>-->
-                <!--<beans:ref local="daoAuthenticationProvider"/>-->
-            <!--</beans:list>-->
-        <!--</beans:property>-->
-    <!--</beans:bean>-->
-
-    <!--<authentication-manager>-->
+    <!--<authentication-manager alias="authenticationManager">-->
         <!--<authentication-provider user-service-ref="userDetailsService">-->
-            <!--<password-encoder hash="plaintext"/>-->
+            <!--<password-encoder ref="passwordEncoder" />-->
         <!--</authentication-provider>-->
+
         <!--&lt;!&ndash; Spring Social Security authentication provider &ndash;&gt;-->
         <!--<authentication-provider ref="socialAuthenticationProvider" />-->
     <!--</authentication-manager>-->
+    <!--<jdbc-user-service id="userDetailsService"-->
+                       <!--data-source-ref="dataSource"-->
+                       <!--users-by-username-query="select username, password, true from Account where username = ?"-->
+                       <!--authorities-by-username-query="select username, 'ROLE_USER' from Account where username = ?"/>-->
 
-    <!--<beans:bean id="userDetailsService" class="com.example.security.VisitInfoUserDetailsService"/>-->
+
+
+
+
+    <beans:bean id="daoAuthenticationProvider"
+                class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+        <beans:property name="userDetailsService" ref="userDetailsService"/>
+    </beans:bean>
+
+
+    <beans:bean id="authenticationManager"
+                class="org.springframework.security.authentication.ProviderManager">
+        <beans:property name="providers">
+            <beans:list>
+                <beans:ref local="daoAuthenticationProvider"/>
+                <beans:ref local="socialAuthenticationProvider"/>
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+
+    <authentication-manager>
+        <authentication-provider user-service-ref="userDetailsService">
+            <password-encoder hash="plaintext"/>
+        </authentication-provider>
+        <!-- Spring Social Security authentication provider -->
+        <authentication-provider ref="socialAuthenticationProvider" />
+    </authentication-manager>
+
+    <beans:bean id="userDetailsService" class="com.example.security.VisitInfoUserDetailsService"/>
 
 
 

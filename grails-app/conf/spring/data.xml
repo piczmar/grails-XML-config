@@ -18,11 +18,11 @@
 
 
 
-    <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">
+    <!--<jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">-->
         <!--<jdbc:script location="classpath:/org/springframework/social/connect/jdbc/JdbcUsersConnectionRepository.sql" />-->
-        <jdbc:script location="classpath:/org/springframework/social/showcase/account/Account.sql" />
-        <jdbc:script location="classpath:/org/springframework/social/showcase/account/data.sql" />
-    </jdbc:initialize-database>
+        <!--<jdbc:script location="classpath:/org/springframework/social/showcase/account/Account.sql" />-->
+        <!--<jdbc:script location="classpath:/org/springframework/social/showcase/account/data.sql" />-->
+    <!--</jdbc:initialize-database>-->
 
 
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"

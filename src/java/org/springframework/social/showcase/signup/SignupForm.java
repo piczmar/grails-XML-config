@@ -15,10 +15,10 @@
  */
 package org.springframework.social.showcase.signup;
 
-import javax.validation.constraints.Size;
-
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.social.connect.UserProfile;
+
+import javax.validation.constraints.Size;
 
 public class SignupForm {
 
@@ -71,6 +71,11 @@ public class SignupForm {
 		form.setFirstName(providerUser.getFirstName());
 		form.setLastName(providerUser.getLastName());
 		form.setUsername(providerUser.getUsername());
+        System.out.println("USER MAIL = " + providerUser.getEmail());
+        System.out.println("USER FirstName = " + providerUser.getFirstName());
+        System.out.println("USER LastName = " + providerUser.getLastName());
+        System.out.println("USER Name = " + providerUser.getName());
+        System.out.println("USER Username = " + providerUser.getUsername());
 		return form;
 	}
 }
