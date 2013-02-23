@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
-    <file url="file:///media/marcin/Data/dev/visitinfo/sources/visitinfo.m" charset="UTF-8" />
-    <file url="file:///tmp/android_manifest_copy2551228151924465769tmp/AndroidManifest.xml" charset="UTF-8" />
-    <file url="file:///tmp/android_manifest_copy8043203647616371414tmp/AndroidManifest.xml" charset="UTF-8" />
-  </component>
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
 </project>
 

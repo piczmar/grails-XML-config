@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/grails-XML-config.iml" filepath="$PROJECT_DIR$/grails-XML-config.iml" />
-      <module fileurl="file://$PROJECT_DIR$/grails-XML-config-grailsPlugins.iml" filepath="$PROJECT_DIR$/grails-XML-config-grailsPlugins.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Grails-XML-config.iml" filepath="$PROJECT_DIR$/Grails-XML-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Grails-XML-config-grailsPlugins.iml" filepath="$PROJECT_DIR$/Grails-XML-config-grailsPlugins.iml" />
     </modules>
   </component>
 </project>
